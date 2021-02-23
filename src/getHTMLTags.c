@@ -17,12 +17,12 @@ void getHTMLTags(char * inputFilept, char * tagArray[]) {
     char character; //Current character from stdin
 
     //Loops until EOF
-    while((character = getchar()) != EOF) {
+    while((character = getchar()) != EOF && index < 100) {
         //If opening of tag
         if(character == '<') {
             int charIndex = 0; //Initialize the tag string index
             //Loops while the current character is a part of a tag
-            while(isIllegalCharacter(character = getchar()) == 1) {
+            while(isIllegalCharacter(character = getchar()) == 1 && charIndex < 10) {
                 tagArray[index][charIndex] = character; //Add character to current tag
                 charIndex++;
             }
