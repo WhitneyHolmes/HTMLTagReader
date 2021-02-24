@@ -1,6 +1,6 @@
-#include string.h
-#include stdio.h
-#include stdlib.h
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * @returns 0 if duplicate

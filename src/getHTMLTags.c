@@ -1,6 +1,6 @@
-#include string.h
-#include stdio.h
-#include stdlib.h
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * Scans from a pointer of an HTML file (from stdin)
@@ -12,7 +12,7 @@
  * @param inputFilept char pointer to the input file
  * @param tagArray char pointer to the tag array
  */
-void getHTMLTags(char * inputFilept, char * tagArray[]) {
+void getHTMLTags(const char ** inputFilept, char * tagArray[]) {
     int index = 0; //Tag index
     char character; //Current character from stdin
 
