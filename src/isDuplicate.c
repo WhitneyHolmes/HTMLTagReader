@@ -1,8 +1,12 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "functions.h"
 
 /**
+ * Compares the latest addition to an array of strings to
+ * check for duplicates.
+ * @author Whitney Holmes 3502092
  * @returns 0 if duplicate
  * @returns 1 if not duplicate
  */
