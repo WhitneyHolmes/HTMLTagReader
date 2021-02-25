@@ -14,28 +14,30 @@
  */
 int main(int argc, char const * argv[])
 {
-    if(argc > 1) {
-        char * tagArray[ROWS];
-        int index = 0; //Tag index
-        char character; //Current character from stdin
+    char * tagArray[ROWS];
+    int index = 0; //Tag index
+    char character; //Current character from stdin
 
-        //Loops until EOF
-        while((character = getchar()) != EOF && index < 100) {
-            //If opening of tag
-            if(character == '<') {
-                int charIndex = 0; //Initialize the tag string index
-                //Loops while the current character is a part of a tag and less than 10 chars long
-                while(isIllegalCharacter(character = getchar()) == 1 && charIndex < 10) {
-                    tagArray[index][charIndex] = character; //Add character to current tag
-                    charIndex++;
-                }
-            }
-            //Once a tag is complete, increments tag index if it is unique
-            if(isDuplicate(&tagArray[0], index) == 1) {
-                index++; //Increments to the next tag index
+    printf("b1\n");
+    //Loops until EOF
+    while((character = getchar()) != EOF && index < 100) {
+        //If opening of tag
+        printf("b2\n");
+        if(character == '<') {
+            printf("b3\n");
+            int charIndex = 0; //Initialize the tag string index
+            //Loops while the current character is a part of a tag and less than 10 chars long
+            while(isIllegalCharacter(character = getchar()) == 1 && charIndex < 10) {
+                printf("b4\n");
+                tagArray[index][charIndex] = character; //Add character to current tag
+                charIndex++;
             }
         }
-        return 0;        
+        //Once a tag is complete, increments tag index if it is unique
+        if(isDuplicate(&tagArray[0], index) == 1) {
+            printf("b5\n");
+            index++; //Increments to the next tag index
+        }
     }
-    return 1;
+    return 0;        
 }
