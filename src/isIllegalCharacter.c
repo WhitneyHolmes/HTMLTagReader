@@ -18,10 +18,9 @@ int isIllegalCharacter(char charInput) {
     for(int index = 0; index < 3; index++) {
         
         if(charInput == illegalCharacters[index]) {
-            return 0; //Match
-        }
-        else {
-            return 1; //No Match
+            return 0; //Match, true
         }
     }
+
+    return 1; //No match, false
 }

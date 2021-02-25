@@ -11,14 +11,12 @@
  * @returns 1 if not duplicate
  */
 int isDuplicate(char * tagArray[], int arrayLength) {
-    char * tag = tagArray + arrayLength;
+    char * tag = tagArray[0] + arrayLength; //The last tag
+    //Loop through the array
     for(int index = 0; index < arrayLength -1; index++) {
-        if(strcmp(tagArray, tag) == 1) {
-            tagArray++;
-        }
-        else {
-            return 0;
+        if(strcmp(tagArray[index], tag) == 0) {
+             return 0; //If duplicate, return true
         }
     }
-    return 1;
+    return 1; //Return false
 }

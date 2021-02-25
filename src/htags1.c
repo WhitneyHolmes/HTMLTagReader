@@ -12,7 +12,7 @@
  * tag when a " ", "/", or ">" is encountered.
  * @author Whitney Holmes - 3502092
  */
-int main(int argc)
+int main(int argc, char const * argv[])
 {
     if(argc > 1) {
         char * tagArray[ROWS];
@@ -20,7 +20,7 @@ int main(int argc)
         char character; //Current character from stdin
 
         //Loops until EOF
-        while((character = getChar()) != EOF && index < 100) {
+        while((character = getchar()) != EOF && index < 100) {
             //If opening of tag
             if(character == '<') {
                 int charIndex = 0; //Initialize the tag string index
