@@ -13,10 +13,12 @@
 int isDuplicate(char * tagArray[], int arrayLength) {
     char * tag = tagArray + arrayLength;
     for(int index = 0; index < arrayLength -1; index++) {
-        if(strcmp(tagArray, tag) == 1) 
-            tagArray++
-        else
+        if(strcmp(tagArray, tag) == 1) {
+            tagArray++;
+        }
+        else {
             return 0;
+        }
     }
     return 1;
 }

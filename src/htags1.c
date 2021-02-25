@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "functions.h"
 
 #define ROWS 100
@@ -11,7 +12,7 @@
  * tag when a " ", "/", or ">" is encountered.
  * @author Whitney Holmes - 3502092
  */
-int main(int argc, char const * argv[])
+int main(int argc)
 {
     if(argc > 1) {
         char * tagArray[ROWS];
@@ -19,7 +20,7 @@ int main(int argc, char const * argv[])
         char character; //Current character from stdin
 
         //Loops until EOF
-        while(character = getChar() != EOF && index < 100) {
+        while((character = getChar()) != EOF && index < 100) {
             //If opening of tag
             if(character == '<') {
                 int charIndex = 0; //Initialize the tag string index
