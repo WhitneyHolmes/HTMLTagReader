@@ -12,31 +12,33 @@
  * tag when a " ", "/", or ">" is encountered.
  * @author Whitney Holmes - 3502092
  */
-int main(int argc, char const * argv[])
+int main()
 {
     char * tagArray[ROWS];
     int index = 0; //Tag index
     char character; //Current character from stdin
 
-    printf("b1\n");
     //Loops until EOF
     while((character = getchar()) != EOF && index < 100) {
         //If opening of tag
-        printf("b2\n");
+        printf("first while index: %i\n", index);
+        printf("character: %c\n\n", character);
         if(character == '<') {
-            printf("b3\n");
+            printf("In a tag\n");
             int charIndex = 0; //Initialize the tag string index
             //Loops while the current character is a part of a tag and less than 10 chars long
             while(isIllegalCharacter(character = getchar()) == 1 && charIndex < 10) {
-                printf("b4\n");
-                tagArray[index][charIndex] = character; //Add character to current tag
+                printf("2nd while char index: %i\n", charIndex);
+                printf("character: %c\n\n", character);
+                tagArray[charIndex] = character; //Add character to current tag
                 charIndex++;
             }
         }
         //Once a tag is complete, increments tag index if it is unique
         if(isDuplicate(&tagArray[0], index) == 1) {
-            printf("b5\n");
+            printf("Checking for duplicates...\n");
             index++; //Increments to the next tag index
+            tagArray++; //Increments tagArray pointer
         }
     }
     return 0;        

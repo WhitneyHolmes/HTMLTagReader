@@ -11,9 +11,11 @@
  * @returns 1 if not duplicate
  */
 int isDuplicate(char * tagArray[], int arrayLength) {
-    char * tag = tagArray[0] + arrayLength; //The last tag
+    printf("ArrayLength: %i", arrayLength);
+    char * tag = tagArray[0] + arrayLength -1; //The last tag
     //Loop through the array
     for(int index = 0; index < arrayLength -1; index++) {
+        printf("%s", tagArray[index]);
         if(strcmp(tagArray[index], tag) == 0) {
              return 0; //If duplicate, return true
         }
