@@ -10,9 +10,9 @@
  * @returns 0 if duplicate
  * @returns 1 if not duplicate
  */
-int isDuplicate(char * tagArray[], int arrayLength) {
+int isDuplicate(char * charArray[], char * tagArray[], int arrayLength) {
     printf("ArrayLength: %i", arrayLength);
-    char * tag = tagArray[0] + arrayLength -1; //The last tag
+    char * tag = charArray; //Tag to check
     //Loop through the array
     for(int index = 0; index < arrayLength -1; index++) {
         printf("%s", tagArray[index]);
