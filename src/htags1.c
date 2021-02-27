@@ -14,7 +14,7 @@
  */
 int main()
 {
-    char * tagArray[ROWS];
+    char * tagArray[ROWS]; //!!!!!!!!!!!!need different data type!!!!!!!!!
     int index = 0; //Tag index
     char character; //Current character from stdin
 
@@ -38,7 +38,7 @@ int main()
         if(isDuplicate(&tagArray[0], index) == 1) {
             printf("Checking for duplicates...\n");
             index++; //Increments to the next tag index
-            tagArray++; //Increments tagArray pointer
+            &tagArray++; //Increments tagArray pointer
         }
     }
     return 0;        
