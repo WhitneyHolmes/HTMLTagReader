@@ -8,10 +8,11 @@
  * @param tagArray an array of strings
  * @param arrayLength the length of the array
  */
-void printArray(char * tagArray[], int arrayLength) {
+void printArray(char ** tagArray, int arrayLength) {
     printf("The HTML tags used are:\n");
 
     for(int index = 0; index < arrayLength; index++) {
         printf("%s\n", tagArray[index]);
+        //!!!!!!!!!!!!!!!!!!!!!!How to print strings!!
     }
 }

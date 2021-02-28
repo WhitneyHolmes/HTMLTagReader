@@ -37,6 +37,10 @@ int main()
             tagArray[index] = charArray[0]; //Add new tag to tagArray;
         }
     }
-    printArray(&tagArray[0], index);
+    printf("The HTML tags used are:\n");
+
+    for(int i = 0; i < index; i++) {
+        printf("%s\n", tagArray[i]);
+    }
     return 0;        
 }
