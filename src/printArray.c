@@ -13,6 +13,5 @@ void printArray(char * tagArray[], int arrayLength) {
 
     for(int index = 0; index < arrayLength; index++) {
         printf("%s\n", tagArray[index]);
-        tagArray++;
     }
 }

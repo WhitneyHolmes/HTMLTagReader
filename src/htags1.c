@@ -23,25 +23,20 @@ int main()
     //Loops until EOF
     while((character = getchar()) != EOF && index < 100) {
         //If opening of tag
-        printf("first while index: %i\n", index);
-        printf("character: %c\n\n", character);
         if(character == '<') {
-            printf("In a tag\n");
             int charIndex = 0; //Initialize the tag string index
             //Loops while the current character is a part of a tag and less than 10 chars long
             while((isIllegalCharacter(character = getchar()) == 1) && charIndex < 10) {
-                printf("2nd while char index: %i\n", charIndex);
-                printf("character: %c\n\n", character);
-                charArray[charIndex] = character; //Add character to current tag
+                charArray[charIndex] = &character; //Add character to current tag
                 charIndex++;
             }
         }
         //Once a tag is complete, increments tag index if it is unique
         if(isDuplicate(&charArray[0], &tagArray[0], index) == 1) {
-            printf("Checking for duplicates...\n");
             index++; //Increments to the next tag index
-            tagArray[index] = &charArray[0]; //Add new tag to tagArray;
+            tagArray[index] = charArray[0]; //Add new tag to tagArray;
         }
     }
+    printArray(&tagArray[0], index);
     return 0;        
 }
