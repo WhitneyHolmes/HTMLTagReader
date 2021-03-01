@@ -12,7 +12,7 @@
  */
 int isIllegalCharacter(char charInput) {
     //List to compare to
-    char illegalCharacters[] = {' ', '/', '>'};
+    int illegalCharacters[] = {' ', '/', '>'};
 
     //Loops through the list
     for(int index = 0; index < 3; index++) {

@@ -16,9 +16,9 @@
 int main()
 {
     char * tagArray[ROWS]; //!!!!!!!!!!!!need different data type!!!!!!!!!
-    char * charArray[COLS]; 
+    char charArray[COLS]; 
     int index = 0; //Tag index
-    char character; //Current character from stdin
+    int character; //Current character from stdin
 
     //Loops until EOF
     while((character = getchar()) != EOF && index < 100) {
@@ -26,21 +26,37 @@ int main()
         if(character == '<') {
             int charIndex = 0; //Initialize the tag string index
             //Loops while the current character is a part of a tag and less than 10 chars long
-            while((isIllegalCharacter(character = getchar()) == 1) && charIndex < 10) {
-                charArray[charIndex] = &character; //Add character to current tag
-                charIndex++;
+            //character = getchar();
+            while(charIndex < 9) {
+                character = getchar();
+
+                //Make sure it is a tag
+                if(isIllegalCharacter(character) == 1) {
+                    charArray[charIndex] = character; //Add character to current tag
+                    charIndex++;
+                }
+                else {
+                    charArray[charIndex+1] = '\0'; //Add end of string character
+                    charIndex = 0; //Reset charIndex
+                    tagArray[index] = &charArray[0]; //Add to tag list
+
+                    //Once a tag is complete, increments tag index if it is unique
+                    if(isDuplicate(&tagArray[0], index) == 1) {
+                        index++; //Increments to the next tag index
+                    }
+                }
             }
         }
-        //Once a tag is complete, increments tag index if it is unique
-        if(isDuplicate(&charArray[0], &tagArray[0], index) == 1) {
-            index++; //Increments to the next tag index
-            tagArray[index] = charArray[0]; //Add new tag to tagArray;
-        }
+
     }
+
+    //Print the tags
     printf("The HTML tags used are:\n");
 
     for(int i = 0; i < index; i++) {
-        printf("%s\n", tagArray[i]);
+        for(int j = 0; j < (int)strlen(tagArray[i]); j++) {
+            printf("%c\n", tagArray[i][j]);
+        }
     }
     return 0;        
 }
