@@ -1,0 +1,27 @@
+<html>
+<body>
+
+<h1>The div element</h1>
+<div style="background-color:orange;color:white;padding:30px;">
+  <h2>Alice</h2>
+  <p>Alice is a lutino pearl female cockatiel.</p>
+  <p>Lutino cockatiels don't have any grey or brown feathers, only yellow and orange.</p>
+  <p>Pearl is a colour pattern in cockatiels. It causes the base colour to be concentrated in bars on the feathers. These bars are framed with a diluted form of the base colour.</p>
+</div> 
+
+<h1>The span element</h1>
+<p>Alice has <span style="color:red;font-weight:bold">red</span> eyes and <span style="color:pink;font-weight:bold">pink</span> skin.</p>
+
+<div style="background-color:red;padding:10px">
+<span style="color:orange;font-family:verdana">
+<h2>Alice Likes:</h2></span>
+<span style="color:yellow;font-family:courier">
+<ul>
+  <li>bird cookies</li>
+  <li>pooping on people</li>
+  <li>pulling keys off of keyboards</li>
+</ul></span>
+</div>
+
+</body>
+</html>

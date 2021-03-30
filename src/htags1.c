@@ -15,48 +15,39 @@
  */
 int main()
 {
-    char * tagArray[ROWS]; //!!!!!!!!!!!!need different data type!!!!!!!!!
-    char charArray[COLS]; 
-    int index = 0; //Tag index
-    int character; //Current character from stdin
+    char tagArray[ROWS][COLS + 1]; //1 extra char for end of line character
+    char character = getchar();
+    int tagIndex = 0;
+    int charIndex = 0;
+    char eol = '\0';
 
-    //Loops until EOF
-    while((character = getchar()) != EOF && index < 100) {
-        //If opening of tag
-        if(character == '<') {
-            int charIndex = 0; //Initialize the tag string index
-            //Loops while the current character is a part of a tag and less than 10 chars long
-            //character = getchar();
-            while(charIndex < 9) {
-                character = getchar();
+    //Loop until end of file character or tagIndex maxed
+    while(character != EOF && tagIndex < ROWS) {
+        if(character == '<') { //Opening of a tag
+            character = getchar();
+            if(character != '/') { //End tag -- Eliminates looping on end tags
 
-                //Make sure it is a tag
-                if(isIllegalCharacter(character) == 1) {
-                    charArray[charIndex] = character; //Add character to current tag
+                //Loop through the tag, until illegal character encountered or charIndex maxed
+                while(isIllegalCharacter(character) == 1 && charIndex < COLS) {
+                    tagArray[tagIndex][charIndex] = character;
                     charIndex++;
+                    character = getchar();
                 }
-                else {
-                    charArray[charIndex+1] = '\0'; //Add end of string character
-                    charIndex = 0; //Reset charIndex
-                    tagArray[index] = &charArray[0]; //Add to tag list
+                tagArray[tagIndex][charIndex] = '\0'; //End of string
+                charIndex = 0; //Reset charIndex
 
-                    //Once a tag is complete, increments tag index if it is unique
-                    if(isDuplicate(&tagArray[0], index) == 1) {
-                        index++; //Increments to the next tag index
-                    }
+                //Check if already on the list
+                if(isDuplicate(&tagArray[0], tagIndex) == 1) { //Not duplicate
+                    tagIndex++; //Increment to next tag
                 }
             }
         }
-
+        character = getchar();
     }
 
-    //Print the tags
-    printf("The HTML tags used are:\n");
-
-    for(int i = 0; i < index; i++) {
-        for(int j = 0; j < (int)strlen(tagArray[i]); j++) {
-            printf("%c\n", tagArray[i][j]);
-        }
+    int i = 0;
+    printf("The Tag List: \n");
+    for(i; i < tagIndex; i++) {
+        printf("%s\n", tagArray[i]);
     }
-    return 0;        
-}
+}   

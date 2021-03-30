@@ -2,28 +2,35 @@
 COMPILER = gcc
 
 # The C flags to pass to gcc
-C_FLAGS = -std=c99 -g -Wall -Wextra -lm
-
-help:
-	@printf "available command:\n"
-	@printf "	make help               (this command)\n"
+C_FLAGS = -std=c99 -g -Wall -Wextra
 
 # link .o files to make an executable
-htags1: htags1.c
-	$(COMPILER) $(C_FLAGS) -o htags1 htags1.c getHTMLTags.c isDuplicate.c isIllegalCharacter.c printArray.c
+htags1: src/htags1.o src/isIllegalCharacter.o src/isDuplicate.o src/clearTag.o
+	$(COMPILER) $(C_FLAGS) src/htags1.o src/isIllegalCharacter.o src/isDuplicate.o src/clearTag.o -o htags1
 
 # compile the '.o' files
-htags1.o: htags1.c
-	$(COMPILER) $(C_FLAGS) -c htags1 htags1.c 
+htags1.o: src/htags1.c
+	$(COMPILER) $(C_FLAGS) -c src/htags1.c 
 
-getHTMLTags.o: getHTMLTags.c 
-	$(COMPILER) $(C_FLAGS) -c getHTMLTags getHTMLTags.c 
+isIllegalCharacter.o: src/isIllegalCharacter.c 
+	$(COMPILER) $(C_FLAGS) -c src/isIllegalCharacter.c
 
-isDuplicate.o: isDuplicate.c 
-	$(COMPILER) $(C_FLAGS) -c isDuplicate isDuplicate.c 
+isDuplicate.o: src/isDuplicate.c 
+	$(COMPILER) $(C_FLAGS) -c src/isDuplicate.c 
 
-isIllegalCharacter.o: isIllegalCharacter.c 
-	$(COMPILER) $(C_FLAGS) -c isIllegalCharacter isIllegalCharacter.c 
+clearTag.o: src/clearTag.c 
+	$(COMPILER) $(C_FLAGS) -c src/clearTag.c
 
-printArray.o: printArray.c 
-	$(COMPILER) $(C_FLAGS) -c printArray printArray.c 
+# tests
+testall: test0 test1
+
+test0: htags1
+	./htags1 < data/inputs/input0 > data/outputs/output0
+
+test1: htags1
+	./htags1 < data/inputs/input1 > data/outputs/output1
+	diff data/expected/expected1 data/outputs/output1
+
+clean:
+	/bin/rm -f *.o htags1 data/outputs/*
+	

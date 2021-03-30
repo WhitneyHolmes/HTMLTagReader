@@ -11,16 +11,19 @@
  * @returns 1 if there is no match
  */
 int isIllegalCharacter(char charInput) {
-    //List to compare to
-    int illegalCharacters[] = {' ', '/', '>'};
-
-    //Loops through the list
-    for(int index = 0; index < 3; index++) {
-        
-        if(charInput == illegalCharacters[index]) {
-            return 0; //Match, true
-        }
+    int isIllegal = 0;
+    //If uppercase
+    if((int)charInput >= 65 && (int)charInput <= 90) {
+        isIllegal = 1; //false
     }
-
-    return 1; //No match, false
+    //iF lowercase
+    else if((int)charInput >=97 && (int)charInput <=122) {
+        isIllegal = 1; //false
+    }
+    //If numeral
+    else if((int)charInput >= 49 && (int)charInput <= 57) {
+        isIllegal = 1; //false
+    }
+    
+    return isIllegal;
 }
