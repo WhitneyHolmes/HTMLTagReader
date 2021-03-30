@@ -12,16 +12,16 @@
  * @returns 1 if not duplicate
  */
 int isDuplicate(char tagArray[][COLS + 1], int numberOfTags) {
-    char * tag = tagArray[0][0];
-    char * newTag = tagArray[numberOfTags -1][0];
+    printf("\tisDuplicate called\n");
+    //char * tag = tagArray[0];
+    //char * newTag = tagArray[numberOfTags -1];
     int i;
 
     for(i = 0; i < numberOfTags -1; i++) {
-        if(tagCmp(tag, newTag) == 1) { //Not duplicate
-            tag++;
+        if(tagCmp(tagArray[0][0]), tagArray[numberOfTags -1][0]) == 1) { //Not duplicate
         }
         else {
-            clearTag(tag, COLS);
+            //clearTag(tag, COLS);
             return 0; //true 
         }
     }

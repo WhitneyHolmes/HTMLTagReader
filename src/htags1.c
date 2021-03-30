@@ -30,15 +30,20 @@ int main()
                 //Loop through the tag, until illegal character encountered or charIndex maxed
                 while(isIllegalCharacter(character) == 1 && charIndex < COLS) {
                     tagArray[tagIndex][charIndex] = character;
+                    printf("\nCharacter in while loop: %c, charIndex: %d, tagIndex: %d\n", character, charIndex, tagIndex);
                     charIndex++;
                     character = getchar();
                 }
                 tagArray[tagIndex][charIndex] = '\0'; //End of string
                 charIndex = 0; //Reset charIndex
-
+                //printf("Tag ' %s ' is in question.\n\n", tagArray[tagIndex -1]);
                 //Check if already on the list
                 if(isDuplicate(&tagArray[0], tagIndex) == 1) { //Not duplicate
+                    //printf("Tag ' %s ' is added.\n\n", tagArray[tagIndex -1]);
                     tagIndex++; //Increment to next tag
+                /*! 
+                    isDuplicate is being called for each character
+                */
                 }
             }
         }
