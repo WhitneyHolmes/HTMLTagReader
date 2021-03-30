@@ -17,7 +17,7 @@ int isDuplicate(char tagArray[][COLS + 1], int numberOfTags) {
     int i;
 
     for(i = 0; i < numberOfTags -1; i++) {
-        if(strcmp(tag, newTag) == 1) { //Not duplicate
+        if(tagCmp(tag, newTag) == 1) { //Not duplicate
             tag++;
         }
         else {

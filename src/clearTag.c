@@ -5,11 +5,9 @@
 
 #define COLS 10
 /**
- * Compares an array of strings to itself to check for duplicates.
- * Clears the tag if it is a duplicate
+ * Removes a tag from an array
  * @author Whitney Holmes 3502092
- * @returns 0 if duplicate
- * @returns 1 if not duplicate
+ * @returns Exit Success
  */
 int clearTag(char * tag, int length) {
     int i = length;
@@ -19,5 +17,5 @@ int clearTag(char * tag, int length) {
         tag++;
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
