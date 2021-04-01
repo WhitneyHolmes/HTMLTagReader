@@ -12,17 +12,21 @@
  * @returns 1 if not duplicate
  */
 int isDuplicate(char tagArray[][COLS + 1], int numberOfTags) {
-    printf("\tisDuplicate called\n");
-    //char * tag = tagArray[0];
-    //char * newTag = tagArray[numberOfTags -1];
+    //("\tisDuplicate called\n");
+    char * newTag = &tagArray[numberOfTags][0];
     int i;
-
-    for(i = 0; i < numberOfTags -1; i++) {
-        if(tagCmp(tagArray[0][0]), tagArray[numberOfTags -1][0]) == 1) { //Not duplicate
-        }
-        else {
-            //clearTag(tag, COLS);
-            return 0; //true 
+    char * tagPointer;
+    //printf("newTag = %s\n", tagArray[numberOfTags -1][0]);
+    //Loop through the list of tags to check for a match
+    //printf("\tNumber of tag ---> %d\n", numberOfTags);
+    //printf("\tnewTag = %s\n", tagArray[numberOfTags]);
+    for(i = 0; i < numberOfTags; i++) {
+        tagPointer = &tagArray[i][0];
+        //printf("\ttagPointer = %s\n", tagArray[i]);
+        if(strcmp(tagPointer, newTag) == 0) { //True
+            int length = sizeof tagArray[i] / sizeof tagArray[i][0];
+            clearTag(newTag, length); //Remove the tag
+            return 0;
         }
     }
     return 1; //Return false if distinct

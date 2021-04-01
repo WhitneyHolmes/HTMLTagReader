@@ -12,7 +12,7 @@
  * @returns 1 if not duplicate
  */
 int tagCmp(char tag1[ROWS][COLS + 1], char tag2[ROWS][COLS + 1]) {
-    printf("\tTag Compare:\n");
+    //printf("\tTag Compare:\n");
     int isDuplicate = 0;
 
     char char1;
@@ -31,7 +31,7 @@ int tagCmp(char tag1[ROWS][COLS + 1], char tag2[ROWS][COLS + 1]) {
         for(i = 0; i < size1; i++) {
             for(j = 0; j < COLS + 1; j++) {
                 if(tag1[i][j] != tag2[i][j]) { //If characters are NOT equal
-                    printf("\t\tTag1[%d][%d] = %c, Tag2[%d][%d] = %c\n", i, j, tag1[i][j], i, j, tag2[i][j]);
+                    //printf("\t\tTag1[%d][%d] = %c, Tag2[%d][%d] = %c\n", i, j, tag1[i][j], i, j, tag2[i][j]);
                     isDuplicate = 1;
                     break;
                 }

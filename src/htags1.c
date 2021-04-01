@@ -30,7 +30,7 @@ int main()
                 //Loop through the tag, until illegal character encountered or charIndex maxed
                 while(isIllegalCharacter(character) == 1 && charIndex < COLS) {
                     tagArray[tagIndex][charIndex] = character;
-                    printf("\nCharacter in while loop: %c, charIndex: %d, tagIndex: %d\n", character, charIndex, tagIndex);
+                    //printf("\nCharacter in while loop: %c, charIndex: %d, tagIndex: %d\n", character, charIndex, tagIndex);
                     charIndex++;
                     character = getchar();
                 }
