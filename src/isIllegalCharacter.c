@@ -29,16 +29,14 @@ int isIllegalCharacter(char charInput) {
     }
 
     //If <
-    else if((int)charInput == 60)) {
+    else if((int)charInput == 60) {
         isIllegal = 1; 
     }
 
-    //If >
-    else if((int)charInput == 62)) {
+    /* If >
+    else if((int)charInput == 62) {
         isIllegal = 1;
-    }
+    }*/
 
-    
-    else if
     return isIllegal;
 }

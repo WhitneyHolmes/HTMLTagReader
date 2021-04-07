@@ -14,7 +14,6 @@ int clearTag(char * tag, int length) {
     int i = length;
 
     for(i; i < length; i++) {
-        printf("\t\tclearTag: Loop0\n");
         *tag = '\t';
         tag++;
     }

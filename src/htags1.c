@@ -3,7 +3,7 @@
 #include <string.h>
 #include "functions.h"
 
-#define ROWS 10
+#define ROWS 100
 #define COLS 10
 /**
  * Scans from a pointer of an HTML file (from stdin)
@@ -26,7 +26,7 @@ int main(int argc, char * argv[])
     int charIndex = 0;
 
     //Loop until end of file character or tagIndex maxed
-    while((character = fgetc(filePointer)) != EOF /*&& character != -1 */&& tagIndex < ROWS) {
+    while((character != EOF && character != -1 && tagIndex < ROWS) {
         /*if(character == '<') { //Opening of a tag
             tagArray[tagIndex][charIndex] = character;
             charIndex++;*/
@@ -35,7 +35,7 @@ int main(int argc, char * argv[])
             //End tag -- Eliminates looping on end tags
             //if(character != '/') { 
                 //Loop through the tag, until illegal character encountered or charIndex maxed
-                while(isIllegalCharacter(character = fgetc(filePointer)) == 1 && charIndex < COLS) {
+                while(isIllegalCharacter(character = fgetc(filePointer)) == 1 && charIndex < COLS -2) {
                     tagArray[tagIndex][charIndex] = character;
                     //printf("\nCharacter in while loop: %c, charIndex: %d, tagIndex: %d\n", character, charIndex, tagIndex);
                     charIndex++;
@@ -44,6 +44,7 @@ int main(int argc, char * argv[])
 
                 //Check if full tag (not just ">")
                 if(charIndex > 1) {
+                    tagArray[tagIndex][charIndex] = '>' //End of tag
                     tagArray[tagIndex][charIndex] = '\0'; //End of string
 
                     //Check if duplicate
@@ -58,12 +59,10 @@ int main(int argc, char * argv[])
         //}
         //character = getchar();
     }
-    printf("Character: %d\n", character);
 
     int i = 0;
     printf("The Tag List: \n");
     for(i; i < tagIndex; i++) {
-        printf("main: Loop2\n");
         printf("%s\n", tagArray[i]);
     }
 }   

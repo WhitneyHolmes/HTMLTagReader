@@ -21,7 +21,6 @@ int isDuplicate(char tagArray[][COLS + 1], int numberOfTags) {
     //printf("\tNumber of tag ---> %d\n", numberOfTags);
     //printf("\tnewTag = %s\n", tagArray[numberOfTags]);
     for(i = 0; i < numberOfTags; i++) {
-        printf("\tisDublicate: Loop0\n");
         tagPointer = &tagArray[i][0];
         //printf("\ttagPointer = %s\n", tagArray[i]);
         if(strcmp(tagPointer, newTag) == 0) { //True
