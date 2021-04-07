@@ -58,7 +58,9 @@ int main(int argc, char * argv[])
 
         //If it is an end tag
         if(character == '/') { 
+            printf("\t\tcharacter = /\n");
             tag = 0;
+            clearTag(tagArray[tagIndex], charIndex);
         }
 
         //Check if full tag (not just ">")
