@@ -13,40 +13,50 @@
  * tag when a " ", "/", or ">" is encountered.
  * @author Whitney Holmes - 3502092
  */
-int main()
+int main(int argc, char * argv[])
 {
+    //Read from file
+    FILE * filePointer;
+    filePointer = fopen(argv[1], "r"); //Read file
+    int character;
+
+    //tagArray
     char tagArray[ROWS][COLS + 1]; //1 extra char for end of line character
-    char character = getchar();
     int tagIndex = 0;
     int charIndex = 0;
-    char eol = '\0';
 
     //Loop until end of file character or tagIndex maxed
-    while(character != EOF && character != -1 && tagIndex < ROWS) {
-        if(character == '<') { //Opening of a tag
-            character = getchar();
-            if(character != '/') { //End tag -- Eliminates looping on end tags
+    while((character = fgetc(filePointer)) != EOF /*&& character != -1 */&& tagIndex < ROWS) {
+        /*if(character == '<') { //Opening of a tag
+            tagArray[tagIndex][charIndex] = character;
+            charIndex++;*/
+            //character = fgetc(filePointer);
+
+            //End tag -- Eliminates looping on end tags
+            //if(character != '/') { 
                 //Loop through the tag, until illegal character encountered or charIndex maxed
-                while(isIllegalCharacter(character) == 1 && charIndex < COLS) {
+                while(isIllegalCharacter(character = fgetc(filePointer)) == 1 && charIndex < COLS) {
                     tagArray[tagIndex][charIndex] = character;
                     //printf("\nCharacter in while loop: %c, charIndex: %d, tagIndex: %d\n", character, charIndex, tagIndex);
                     charIndex++;
-                    character = getchar();
+                    //character = getchar();
                 }
-                tagArray[tagIndex][charIndex] = '\0'; //End of string
+
+                //Check if full tag (not just ">")
+                if(charIndex > 1) {
+                    tagArray[tagIndex][charIndex] = '\0'; //End of string
+
+                    //Check if duplicate
+                    if(isDuplicate(&tagArray[0], tagIndex) == 1) { //Not duplicate
+                        //printf("Tag ' %s ' is added.\n\n", tagArray[tagIndex -1]);
+                        tagIndex++; //Increment to next tag
+                    }
+                }
                 charIndex = 0; //Reset charIndex
                 //printf("Tag ' %s ' is in question.\n\n", tagArray[tagIndex -1]);
-                //Check if already on the list
-                if(isDuplicate(&tagArray[0], tagIndex) == 1) { //Not duplicate
-                    //printf("Tag ' %s ' is added.\n\n", tagArray[tagIndex -1]);
-                    tagIndex++; //Increment to next tag
-                /*! 
-                    isDuplicate is being called for each character
-                */
-                }
-            }
-        }
-        character = getchar();
+            //}
+        //}
+        //character = getchar();
     }
     printf("Character: %d\n", character);
 

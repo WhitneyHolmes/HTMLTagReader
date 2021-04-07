@@ -7,16 +7,19 @@
  * of characters.
  * @author Whitney Holmes - 3502092
  * @param charInput a char value to compare
- * @returns 0 if there is a match
- * @returns 1 if there is no match
+ * @returns 0 if illegal
+ * @returns 1 if legal
  */
 int isIllegalCharacter(char charInput) {
     int isIllegal = 0;
+
+    //List of if statements of allowed characters
+
     //If uppercase
     if((int)charInput >= 65 && (int)charInput <= 90) {
         isIllegal = 1; //false
     }
-    //iF lowercase
+    //If lowercase
     else if((int)charInput >=97 && (int)charInput <=122) {
         isIllegal = 1; //false
     }
@@ -24,12 +27,18 @@ int isIllegalCharacter(char charInput) {
     else if((int)charInput >= 49 && (int)charInput <= 57) {
         isIllegal = 1; //false
     }
+
+    //If <
+    else if((int)charInput == 60)) {
+        isIllegal = 1; 
+    }
+
+    //If >
+    else if((int)charInput == 62)) {
+        isIllegal = 1;
+    }
+
     
-    if(isIllegal -= 0) {
-        printf("Illegal\n");
-    }
-    else {
-        printf("Legal :)\n");
-    }
+    else if
     return isIllegal;
 }
