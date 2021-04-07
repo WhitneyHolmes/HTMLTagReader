@@ -33,10 +33,10 @@ int isIllegalCharacter(char charInput) {
         isIllegal = 1; 
     }
 
-    /* If >
+    //If >
     else if((int)charInput == 62) {
         isIllegal = 1;
-    }*/
+    }
 
     return isIllegal;
 }
