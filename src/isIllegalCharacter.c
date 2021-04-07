@@ -25,5 +25,11 @@ int isIllegalCharacter(char charInput) {
         isIllegal = 1; //false
     }
     
+    if(isIllegal -= 0) {
+        printf("Illegal\n");
+    }
+    else {
+        printf("Legal :)\n");
+    }
     return isIllegal;
 }

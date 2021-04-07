@@ -4,7 +4,7 @@
 #include "functions.h"
 
 #define COLS 10
-#define ROWS 100
+#define ROWS 10
 /**
  * Compares two strings together, character by character
  * @author Whitney Holmes 3502092

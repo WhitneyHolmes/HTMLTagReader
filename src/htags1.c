@@ -3,7 +3,7 @@
 #include <string.h>
 #include "functions.h"
 
-#define ROWS 100
+#define ROWS 10
 #define COLS 10
 /**
  * Scans from a pointer of an HTML file (from stdin)
@@ -22,11 +22,10 @@ int main()
     char eol = '\0';
 
     //Loop until end of file character or tagIndex maxed
-    while(character != EOF && tagIndex < ROWS) {
+    while(character != EOF && character != -1 && tagIndex < ROWS) {
         if(character == '<') { //Opening of a tag
             character = getchar();
             if(character != '/') { //End tag -- Eliminates looping on end tags
-
                 //Loop through the tag, until illegal character encountered or charIndex maxed
                 while(isIllegalCharacter(character) == 1 && charIndex < COLS) {
                     tagArray[tagIndex][charIndex] = character;
@@ -49,10 +48,12 @@ int main()
         }
         character = getchar();
     }
+    printf("Character: %d\n", character);
 
     int i = 0;
     printf("The Tag List: \n");
     for(i; i < tagIndex; i++) {
+        printf("main: Loop2\n");
         printf("%s\n", tagArray[i]);
     }
 }   
