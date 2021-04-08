@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include "functions.h"
 
-#define COLS 10
 /**
  * Removes a tag from an array
  * @author Whitney Holmes 3502092

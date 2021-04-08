@@ -1,7 +1,8 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-#define COLS 10
+#define COLS 20
+#define ROWS 100
 
 int isIllegalCharacter(char charInput);
 

@@ -34,6 +34,9 @@ test1: htags1 err
 	./htags1 data/inputs/input1 > data/outputs/output1
 	diff data/expected/expected1 data/outputs/output1
 
+test2: htags1 err
+	./htags1 data/inputs/input2 > data/outputs/output2
+
 clean: err
 	/bin/rm -f *.o htags1 data/outputs/*
 

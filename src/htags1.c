@@ -3,8 +3,6 @@
 #include <string.h>
 #include "functions.h"
 
-#define ROWS 100
-#define COLS 10
 /**
  * Scans from a pointer of an HTML file (from stdin)
  * until EOF. 
@@ -52,15 +50,15 @@ int main(int argc, char * argv[])
         //When readinging tags like <span ....>
         // character != '/' keeps charIndex from incrimenting for
         //the case when character = '/'
-        if(tag == 1 && character != '/') {
+        if(tag == 1 && character != '/' && character != '!') {
             //printf("\t\ttag = %d\n", tag);
             tagArray[tagIndex][charIndex] = '>';
             charIndex++;
             tag = 0;
         }
 
-        //If it is an end tag
-        if(character == '/') { 
+        //If it is an end tag or something like <!DOCTYPE>
+        if(character == '/' || character == '!') { 
             //printf("\t\tchar = %c\n", character);
             tag = 0;
             clearTag(tagArray[tagIndex], charIndex);

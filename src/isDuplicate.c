@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "functions.h"
 
-#define COLS 10
+
 /**
  * Compares an array of strings to itself to check for duplicates.
  * Clears the tag if it is a duplicate
@@ -12,7 +12,7 @@
  * @returns 1 if not duplicate
  */
 int isDuplicate(char tagArray[][COLS + 1], int numberOfTags) {
-    //("\tisDuplicate called\n");
+    //printf("\tisDuplicate called\n");
     char * newTag = &tagArray[numberOfTags][0];
     int i;
     char * tagPointer;
