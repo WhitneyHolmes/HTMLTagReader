@@ -31,7 +31,7 @@ int main(int argc, char * argv[])
         //Loop through the tag, until illegal character encountered or charIndex maxed
         while(isIllegalCharacter(character = fgetc(filePointer)) == 1 && charIndex < COLS) {
                 //If at the start of a tag
-                printf("character: %c\n", character);
+                //printf("character: %c\n", character);
                 if(character == '<') {
                     tag = 1; //start of tag
                 }
@@ -39,7 +39,7 @@ int main(int argc, char * argv[])
                 //If in a tag
                 if(tag == 1) {
                     tagArray[tagIndex][charIndex] = character;
-                    printf("\t\t\t\t%s\n", tagArray[tagIndex]);
+                    //printf("\t\t\t\t%s\n", tagArray[tagIndex]);
                     charIndex++;
                 }
                 
@@ -50,7 +50,10 @@ int main(int argc, char * argv[])
                 }
         }
         //When readinging tags like <span ....>
-        if(tag == 1) { 
+        // character != '/' keeps charIndex from incrimenting for
+        //the case when character = '/'
+        if(tag == 1 && character != '/') {
+            //printf("\t\ttag = %d\n", tag);
             tagArray[tagIndex][charIndex] = '>';
             charIndex++;
             tag = 0;
@@ -58,7 +61,7 @@ int main(int argc, char * argv[])
 
         //If it is an end tag
         if(character == '/') { 
-            printf("\t\tcharacter = /\n");
+            //printf("\t\tchar = %c\n", character);
             tag = 0;
             clearTag(tagArray[tagIndex], charIndex);
         }
@@ -76,6 +79,7 @@ int main(int argc, char * argv[])
             else {
                 clearTag(tagArray[tagIndex], charIndex);
             }
+            charIndex = 0;
         }
         charIndex = 0; //Reset charIndex
     }
