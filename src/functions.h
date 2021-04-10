@@ -6,8 +6,11 @@
 
 int isIllegalCharacter(char charInput);
 
-int isDuplicate(char tagArray[][COLS +1], int numberOfTags);
+int isDuplicate(char ** tagArray, int numberOfTags);
 
-int clearTag(char * tag, int length);
+char * clearTag(char * tag);
 
+char ** createTagArray(int rows, int cols);
+
+int clearTagArray(char ** tagArray, int tagIndex);
 #endif

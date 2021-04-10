@@ -7,8 +7,8 @@ C_FLAGS = -std=c99 -g -Wall -Wshadow
 ERR = $(Error is here!)
 
 # link .o files to make an executable
-htags1: src/htags1.o src/isIllegalCharacter.o src/isDuplicate.o src/clearTag.o
-	$(COMPILER) $(C_FLAGS) src/htags1.o src/isIllegalCharacter.o src/isDuplicate.o src/clearTag.o -o htags1
+htags1: src/htags1.o src/isIllegalCharacter.o src/isDuplicate.o src/clearTag.o src/createTagArray.o src/clearTagArray.o
+	$(COMPILER) $(C_FLAGS) src/htags1.o src/isIllegalCharacter.o src/isDuplicate.o src/clearTag.o src/createTagArray.o src/clearTagArray.o -o htags1
 
 # compile the '.o' files
 htags1.o: src/htags1.c err
@@ -22,6 +22,12 @@ isDuplicate.o: src/isDuplicate.c err
 
 clearTag.o: src/clearTag.c err
 	$(COMPILER) $(C_FLAGS) -c src/clearTag.c
+
+createTagArray.o: src/createTagArray.c err
+	$(COMPILER) $(C_FLAGS) -c src/createTagArray.c
+
+clearTagArray.o: src/src/clearTagArray.c err
+	$(COMPILER) $(C_FLAGS) -c src/src/clearTagArray.c
 
 # tests
 testall: test0 test1 err

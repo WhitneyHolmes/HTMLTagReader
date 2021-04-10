@@ -4,17 +4,16 @@
 #include "functions.h"
 
 /**
- * Removes a tag from an array.
+ * Removes a tag from an dynamically allocated array.
  * @author Whitney Holmes 3502092
- * @returns Exit Success
+ * @returns New Address of tag
  */
-int clearTag(char * tag, int length) {
-    int i = length;
+char * clearTag(char * tag) {
+    //printf("Clearing: %s\tAddress: %p\n", tag, tag);
+    free(tag);
+    
+    //Reallocate
+    tag = malloc(COLS * sizeof(char));
 
-    for(i; i < length; i++) {
-        *tag = '\0';
-        tag++;
-    }
-
-    return EXIT_SUCCESS;
+    return tag;
 }

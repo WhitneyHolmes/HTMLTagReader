@@ -10,7 +10,7 @@
  * @returns 0 if duplicate
  * @returns 1 if not duplicate
  */
-int isDuplicate(char tagArray[][COLS + 1], int numberOfTags) {
+int isDuplicate(char ** tagArray, int numberOfTags) {
     char * newTag = &tagArray[numberOfTags][0];
     int i;
     char * tagPointer;
@@ -21,7 +21,9 @@ int isDuplicate(char tagArray[][COLS + 1], int numberOfTags) {
 
         if(strcmp(tagPointer, newTag) == 0) { //True
             int length = sizeof tagArray[i] / sizeof tagArray[i][0]; //Length of tag
-            clearTag(newTag, length); //Remove the tag
+            //printf("\t\tNewTag: %s\n", newTag);
+            //printf("\t\tCurrentTag: %s\n", tagPointer);
+            //*newTag = clearTag(newTag); //Remove the tag
             return 0;
         }
     }
