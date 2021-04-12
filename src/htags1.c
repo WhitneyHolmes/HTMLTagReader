@@ -24,7 +24,8 @@ int main(int argc, char * argv[])
     int character;
 
     //tagArray
-    char ** tagArray = createTagArray(ROWS, COLS);
+    int arrayLength = ROWS;
+    char ** tagArray = createTagArray(arrayLength, COLS);
     if(tagArray == NULL) {
         printf("Array not allocated.\n");
         return EXIT_FAILURE;
@@ -36,28 +37,23 @@ int main(int argc, char * argv[])
     int tag = 1; //Flag, 1: in a tag, 2: not in a tag.
 
     //Loop until end of file character or tagIndex maxed.
-    while(character != EOF && character != -1 && tagIndex < ROWS) {
-        //printf("Character: %c\n", character);
-
+    while(character != EOF && character != -1 && tagIndex < arrayLength) {
         //Loop through the tag, until illegal character encountered or charIndex maxed.
         while(isIllegalCharacter(character = fgetc(filePointer)) == 1 && charIndex < COLS) {
                 
                 //If at the start of a tag.
                 if(character == '<') {
-                    //printf("Start of tag %d\n", tagIndex);
                     tag = 1; //Start of tag.
                 }
 
                 //If in a tag.
                 if(tag == 1) {
                     tagArray[tagIndex][charIndex] = character;
-                    //printf("\t\tTag = \t\t%s\n", tagArray[tagIndex]);
                     charIndex++;
                 }
                 
                 //If at the end of a tag.
                 if(character == '>') {
-                    //printf("End of tag %d\n", tagIndex);
                     tag = 0; //End of a tag.
                     break;
                 }
@@ -69,7 +65,6 @@ int main(int argc, char * argv[])
          * the case when character = '/'.
         */
         if(tag == 1 && character != '/' && character != '!') {
-            //printf("Tag like <span ...>\n");
             tagArray[tagIndex][charIndex] = '>';
             charIndex++;
             tag = 0;
@@ -77,7 +72,6 @@ int main(int argc, char * argv[])
 
         //If it is an end tag or something like <!DOCTYPE>.
         if(character == '/' || character == '!') { 
-            //printf("Tag like <!DOCTYPE>\n");
             tag = 0;
             tagArray[tagIndex] = clearTag(tagArray[tagIndex]);
         }
@@ -86,19 +80,34 @@ int main(int argc, char * argv[])
         if(charIndex > 1 && tag == 0) {
             tagArray[tagIndex][charIndex] = '>';
             tagArray[tagIndex][charIndex] = '\0'; //End of string.
-            //printf("is Tag\n");
 
             //Check if duplicate
-            if(isDuplicate(tagArray, tagIndex) == 1) { //Not duplicate.
-                //printf("Not duplicate\n");
+            if(isDuplicate(tagArray, tagIndex) == 1) { //Not duplicate.;
                 tagIndex++; //Increment to next tag.
             }
             else {
                 tagArray[tagIndex] = clearTag(tagArray[tagIndex]);
-                //printf("\t\t\t\t\tTag cleared!\n");
+            }
+
+            //Check if <>
+            if(strcmp("<>", tagArray[tagIndex]) == 1) {
+                printf("Is <>\n");
+                //tagArray[tagIndex] = clearTag(tagArray[tagIndex]);
             }
         }
         charIndex = 0; //Reset charIndex.
+
+        if(tagIndex == arrayLength) {
+            //printf("Extending array:\n");
+            printf("Old Length: %d\n", arrayLength);
+            tagArray = extendArray(tagArray, arrayLength);
+            if(tagArray == NULL || arrayLength == sizeof(tagArray)) {
+                printf("Array didn't extend properlly\n");
+                return EXIT_FAILURE;
+            }
+            arrayLength = sizeof(tagArray);
+            printf("New Length: %d\n", arrayLength);
+        }
     }
 
     //Print the complete list.
@@ -110,7 +119,8 @@ int main(int argc, char * argv[])
 
     fclose(filePointer);
 
-    clearTagArray(tagArray, tagIndex);
+    //printf("sizeofTagArray: %d\n", arrayLength);
+    clearTagArray(tagArray, arrayLength);
 
     return EXIT_SUCCESS;
 }   

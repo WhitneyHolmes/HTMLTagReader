@@ -2,7 +2,7 @@
 #define FUNCTIONS_H
 
 #define COLS 20
-#define ROWS 100
+#define ROWS 5
 
 int isIllegalCharacter(char charInput);
 
@@ -13,4 +13,6 @@ char * clearTag(char * tag);
 char ** createTagArray(int rows, int cols);
 
 int clearTagArray(char ** tagArray, int tagIndex);
+
+char ** extendArray(char ** tagArray, int length);
 #endif

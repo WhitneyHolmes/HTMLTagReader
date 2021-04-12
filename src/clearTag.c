@@ -9,7 +9,6 @@
  * @returns New Address of tag
  */
 char * clearTag(char * tag) {
-    //printf("Clearing: %s\tAddress: %p\n", tag, tag);
     free(tag);
     
     //Reallocate

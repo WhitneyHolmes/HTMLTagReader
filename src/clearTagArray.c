@@ -11,18 +11,9 @@
  */
 int clearTagArray(char ** tagArray, int tagIndex) {
     int i;
-
-    int length = tagIndex;
+    int length = sizeof(tagArray);
     //printf("tagIndex = %d\n", tagIndex);
     //printf("rows = %d\n", ROWS);
-    
-    if(tagIndex < ROWS) {
-        length = ROWS;
-    }
-    else if(tagIndex >= ROWS) {
-        length = tagIndex;  
-    }
-
     for(i = 0; i < length; i++) {
         free(tagArray[i]);
         //printf("free: %d/%d\n", i, length);

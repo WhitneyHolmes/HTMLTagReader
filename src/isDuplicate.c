@@ -5,7 +5,6 @@
 
 /**
  * Compares an array of strings to itself to check for duplicates.
- * Clears the tag if it is a duplicate.
  * @author Whitney Holmes 3502092
  * @returns 0 if duplicate
  * @returns 1 if not duplicate
@@ -21,9 +20,6 @@ int isDuplicate(char ** tagArray, int numberOfTags) {
 
         if(strcmp(tagPointer, newTag) == 0) { //True
             int length = sizeof tagArray[i] / sizeof tagArray[i][0]; //Length of tag
-            //printf("\t\tNewTag: %s\n", newTag);
-            //printf("\t\tCurrentTag: %s\n", tagPointer);
-            //*newTag = clearTag(newTag); //Remove the tag
             return 0;
         }
     }
