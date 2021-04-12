@@ -5,20 +5,21 @@
 
 /**
  * Clears a 2D dynamically allocated array
- * from memory
+ * from memory.
  * @author Whitney Holmes 3502092
- * @returns EXIT_SUCCESS
+ * @param tagArray a pointer to a 2D dynamic char array/
+ * @param length the length of the 1st dimension of the array.
+ * @returns 0
  */
-int clearTagArray(char ** tagArray, int tagIndex) {
+int clearTagArray(char ** tagArray, int length) {
     int i;
-    int length = sizeof(tagArray);
-    //printf("tagIndex = %d\n", tagIndex);
-    //printf("rows = %d\n", ROWS);
+
+    //Free the 2nd dimension.
     for(i = 0; i < length; i++) {
         free(tagArray[i]);
-        //printf("free: %d/%d\n", i, length);
     }
     
+    //Free the 1st dimension.
     free(tagArray);
 
     return 0;

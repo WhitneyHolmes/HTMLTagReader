@@ -7,8 +7,7 @@
  * of allowed characters.
  * @author Whitney Holmes - 3502092
  * @param charInput a char value to compare
- * @returns 0 if illegal
- * @returns 1 if legal
+ * @returns 0 if illegal, 1 if legal.
  */
 int isIllegalCharacter(char charInput) {
     int isIllegal = 0;

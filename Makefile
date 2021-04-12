@@ -33,7 +33,7 @@ extendArray.o: src/extendArray.o
 	$(COMPILER) $(C_FLAGS) -c src/extendArray.c 
 
 # tests
-testall: test0 test1 err
+testall: test0 test1 test2 err
 
 test0: htags1 err
 	./htags1 data/inputs/input0 > data/outputs/output0
@@ -45,6 +45,7 @@ test1: htags1 err
 
 test2: htags1 err
 	./htags1 data/inputs/input2 > data/outputs/output2
+	diff data/expected/expected1 data/outputs/output1
 
 clean: err
 	/bin/rm -f *.o htags1 data/outputs/*

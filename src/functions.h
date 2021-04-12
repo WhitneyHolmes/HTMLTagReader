@@ -2,7 +2,7 @@
 #define FUNCTIONS_H
 
 #define COLS 20
-#define ROWS 5
+#define ROWS 20
 
 int isIllegalCharacter(char charInput);
 

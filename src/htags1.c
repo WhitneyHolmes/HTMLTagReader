@@ -27,7 +27,7 @@ int main(int argc, char * argv[])
     int arrayLength = ROWS;
     char ** tagArray = createTagArray(arrayLength, COLS);
     if(tagArray == NULL) {
-        printf("Array not allocated.\n");
+        printf("Array not allocated!\n");
         return EXIT_FAILURE;
     }
     
@@ -76,40 +76,32 @@ int main(int argc, char * argv[])
             tagArray[tagIndex] = clearTag(tagArray[tagIndex]);
         }
 
-        //Check if full tag (not just ">").
-        if(charIndex > 1 && tag == 0) {
+        //If full tag (not just ">" or "<>").
+        if(charIndex > 2 && tag == 0) {
             tagArray[tagIndex][charIndex] = '>';
             tagArray[tagIndex][charIndex] = '\0'; //End of string.
 
-            //Check if duplicate
-            if(isDuplicate(tagArray, tagIndex) == 1) { //Not duplicate.;
+            //Check if duplicate.
+            if(isDuplicate(tagArray, tagIndex) == 1) { //Not duplicate.
                 tagIndex++; //Increment to next tag.
             }
             else {
                 tagArray[tagIndex] = clearTag(tagArray[tagIndex]);
-            }
-
-            //Check if <>
-            if(strcmp("<>", tagArray[tagIndex]) == 1) {
-                printf("Is <>\n");
-                //tagArray[tagIndex] = clearTag(tagArray[tagIndex]);
-            }
+            }   
         }
         charIndex = 0; //Reset charIndex.
 
-        if(tagIndex == arrayLength) {
-            //printf("Extending array:\n");
-            printf("Old Length: %d\n", arrayLength);
+        //Extend the array.
+        if(tagIndex == arrayLength -1) {
             tagArray = extendArray(tagArray, arrayLength);
-            if(tagArray == NULL || arrayLength == sizeof(tagArray)) {
-                printf("Array didn't extend properlly\n");
+            arrayLength += ROWS;
+            if(tagArray == NULL) {
+                printf("Array not extended properlly!\n");
                 return EXIT_FAILURE;
             }
-            arrayLength = sizeof(tagArray);
-            printf("New Length: %d\n", arrayLength);
         }
     }
-
+    
     //Print the complete list.
     int i = 0;
     printf("The Tag List: \n");
@@ -119,7 +111,6 @@ int main(int argc, char * argv[])
 
     fclose(filePointer);
 
-    //printf("sizeofTagArray: %d\n", arrayLength);
     clearTagArray(tagArray, arrayLength);
 
     return EXIT_SUCCESS;
